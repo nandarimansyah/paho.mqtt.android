@@ -53,22 +53,22 @@ public class MqttCallbackHandler implements MqttCallback {
    */
   @Override
   public void connectionLost(Throwable cause) {
-    if (cause != null) {
-      Log.d(TAG, "Connection Lost: " + cause.getMessage());
-      Connection c = Connections.getInstance(context).getConnection(clientHandle);
-      c.addAction("Connection Lost");
-      c.changeConnectionStatus(Connection.ConnectionStatus.DISCONNECTED);
-
-      String message = context.getString(R.string.connection_lost, c.getId(), c.getHostName());
-
-      //build intent
-      Intent intent = new Intent();
-      intent.setClassName(context, activityClass);
-      intent.putExtra("handle", clientHandle);
-
-      //notify the user
-      Notify.notifcation(context, message, intent, R.string.notifyTitle_connectionLost);
-    }
+//    if (cause != null) {
+//      Log.d(TAG, "Connection Lost: " + cause.getMessage());
+//      Connection c = Connections.getInstance(context).getConnection(clientHandle);
+//      c.addAction("Connection Lost");
+//      c.changeConnectionStatus(Connection.ConnectionStatus.DISCONNECTED);
+//
+//      String message = context.getString(R.string.connection_lost, c.getId(), c.getHostName());
+//
+//      //build intent
+//      Intent intent = new Intent();
+//      intent.setClassName(context, activityClass);
+//      intent.putExtra("handle", clientHandle);
+//
+//      //notify the user
+//      Notify.notifcation(context, message, intent, R.string.notifyTitle_connectionLost);
+//    }
   }
 
   /**

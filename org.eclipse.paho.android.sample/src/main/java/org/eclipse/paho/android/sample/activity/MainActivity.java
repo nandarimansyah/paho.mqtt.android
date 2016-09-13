@@ -276,9 +276,13 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private MqttConnectOptions optionsFromModel(ConnectionModel model){
 
         MqttConnectOptions connOpts = new MqttConnectOptions();
-        connOpts.setCleanSession(model.isCleanSession());
-        connOpts.setConnectionTimeout(model.getTimeout());
-        connOpts.setKeepAliveInterval(model.getKeepAlive());
+        connOpts.setCleanSession(false);
+        connOpts.setConnectionTimeout(30);
+        connOpts.setKeepAliveInterval(20);
+
+        connOpts.setAutomaticReconnect(true);
+        connOpts.setMaxInflight(20);
+
         if(!model.getUsername().equals(ActivityConstants.empty)){
             connOpts.setUserName(model.getUsername());
         }
